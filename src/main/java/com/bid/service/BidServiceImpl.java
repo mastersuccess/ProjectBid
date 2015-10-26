@@ -8,64 +8,86 @@ import java.util.stream.Collectors;
 import com.bid.domain.Bid;
 import com.bid.domain.BidProduct;
 
-public class BidServiceImpl implements BidService{
+public class BidServiceImpl implements BidService
+{
 	BidProduct bidProduct;
+	Bid bid;
 	Map<String, Bid> bids;
 	
-
+	public BidServiceImpl()
+	{
+		this.bids = new HashMap<>();
+	}
+	
 	@Override
-	public void postBidProduct(BidProduct bidProduct) {
+	public void postBidProduct(BidProduct bidProduct)
+	{
 		this.bidProduct = bidProduct;
 	}
 
-	public BidServiceImpl() {
-		this.bids = new HashMap<>();
+	/*@Override
+	public void cancelBidProduct(BidProduct bidProduct)
+	{
+		
+		 bids.remove(bidProduct);
+	}
+*/
+	@Override
+	public BidProduct getBidProduct()
+	{
+
+		return this.bidProduct;
 	}
 
 	@Override
-	public void cancelBidProduct(BidProduct bidProduct) {
+	public void changeBidProductStatusIfExpire(BidProduct bidProduct)
+	{
+		this.bidProduct.setStatus(bidProduct.getStatus());
 		
 	}
 
 	@Override
-	public BidProduct getBidProduct() {
-		// TODO Auto-generated method stub
-		return this.bidProduct;
-	}
-
-
-	@Override
-	public void addBid(Bid bid) {
+	public void addBid(Bid bid)
+	{
 		this.bids.put(bid.getBidId(), bid);
 	}
 
 	@Override
-	public void cancelBid(Bid bid) {
-		// TODO Auto-generated method stub
-		
+	public void cancelBid(Bid bid)
+	{
+		  this.bids.put(bid.getBidId(), bid);
 	}
 
 	@Override
-	public List<Bid> getBidAsList() {
-		// TODO Auto-generated method stub
+	public List<Bid> getBidAsList()
+	{
 		return this.bids.values().stream().collect(Collectors.toList());
 	}
 
 	@Override
-	public Map<String, Bid> getBids() {
-		// TODO Auto-generated method stub
+	public Map<String, Bid> getBids()
+	{
 		return this.bids;
 	}
 
 	@Override
-	public int getBidCount() {
-		return this.bids.size();
+	public int getBidCount()
+	{
+		return bids.size();
 	}
 
 	@Override
-	public void changeBidProductStatusIfExpire(BidProduct bidProduct) {
-		// TODO Auto-generated method stub
-		
+	public boolean isBidProductExist(BidProduct bidProduct)
+	{
+
+		return bidProduct.getId()!=null;
+	}
+
+	@Override
+	public boolean isBidExist(Bid bid)
+	{
+
+		return bid.getBidId()!=null;
 	}
 
 }
