@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.bid.domain.Bid;
-import com.bid.domain.BidProduct;
 import com.bid.domain.Product;
 
 public class ProductServiceImpl implements ProductService{
