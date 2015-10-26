@@ -33,11 +33,6 @@ public class BidServiceImpl implements BidService{
 		return this.bidProduct;
 	}
 
-	@Override
-	public void changeBidProductStatus(BidProduct bidProduct) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void addBid(Bid bid) {
@@ -65,6 +60,12 @@ public class BidServiceImpl implements BidService{
 	@Override
 	public int getBidCount() {
 		return this.bids.size();
+	}
+
+	@Override
+	public void changeBidProductStatusIfExpire(BidProduct bidProduct) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
